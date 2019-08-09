@@ -41,7 +41,6 @@ export const storeService = {
     if (zipcode) {
       zipcode = zipcode.replace('-', '');
 
-      Number.isInteger();
       if (!/^\d+$/.test(zipcode)) {
         throw errors.INVALID_ZIPCODE;
       }
