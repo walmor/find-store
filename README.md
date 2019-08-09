@@ -1,14 +1,14 @@
 # Find the nearest store
 
-This is a simple example API to find the nearest store given an address or a zipcode. The problem can be broken down in two parts, geocoding and spatial index.
+This is a simple example API to find the nearest store given an address or a zip code. The problem can be broken down in two parts, geocoding and spatial index.
 
 ## Geocoding
 
-The first step to solve the problem is to use a geocoding service to get the coordinates (latitude and longitude) of a given address or zipcode.
+The first step to solve the problem is to use a geocoding service to get the coordinates (latitude and longitude) of a given address or zip code.
 
 There are multiple geocoding services available, probably the most famous is the [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start), but for this project, I'm using the [HERE Geocoder API](https://developer.here.com/documentation/geocoder).
 
-The service will take the address or zipcode as input and will return, among other things, the coordinates that we need for the next step.
+The service will take the address or zip code as input and will return, among other things, the coordinates that we need for the next step.
 
 ## Spatial index
 
@@ -24,7 +24,17 @@ In a production environment with a large dataset, we would need a database to pe
 
 A live demo could be found here:
 
-https://findstore-demo.herokuapp.com/
+https://findstore-demo.herokuapp.com/closest
+
+### Parameters
+
+| Parameter | Notes                                                                         |
+| --------- | ----------------------------------------------------------------------------- |
+| address   | Free-form text containing address elements.                                   |
+| zip       | Numeric zip code, e.g. 12345678. Dashes will be automatically stripped.       |
+| units     | Whether to display units in miles ("mi") or kilometers ("km"). Default: "mi". |
+
+\* address and zip cannot be used simultaneously, but one of them is required.
 
 ## Running the project locally
 
