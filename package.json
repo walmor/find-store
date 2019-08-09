@@ -1,0 +1,40 @@
+{
+  "name": "mmc-geo",
+  "version": "1.0.0",
+  "description": "Find the nearest store",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm src/server.js",
+    "start:watch": "nodemon -r esm src/server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "geo",
+    "geospatial index",
+    "geocoding"
+  ],
+  "author": "Walmor Moreira",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-error-handler": "^1.1.0",
+    "http-errors": "^1.7.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.17",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "prettier-eslint": "^9.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "rootDir": "test",
+    "testRegex": ".spec.js$"
+  }
+}
