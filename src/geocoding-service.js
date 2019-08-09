@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { config } from './config';
+import { errors } from './errors';
 
 export const HERE_URL = 'https://geocoder.api.here.com/6.2/geocode.json';
 
@@ -14,19 +15,23 @@ export const geocodingService = {
       searchtext,
     };
 
-    const response = await axios.get(HERE_URL, { params });
+    try {
+      const response = await axios.get(HERE_URL, { params });
 
-    const view = response.data.Response.View;
+      const view = response.data.Response.View;
 
-    if (view && view.length > 0) {
-      const pos = view[0].Result[0].Location.DisplayPosition;
+      if (view && view.length > 0) {
+        const pos = view[0].Result[0].Location.DisplayPosition;
 
-      return {
-        latitude: pos.Latitude,
-        longitude: pos.Longitude,
-      };
+        return {
+          latitude: pos.Latitude,
+          longitude: pos.Longitude,
+        };
+      }
+
+      return null;
+    } catch (err) {
+      throw errors.GEOCODING_SERVER_ERROR;
     }
-
-    return null;
   },
 };

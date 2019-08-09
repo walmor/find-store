@@ -9,4 +9,7 @@ export const errors = {
   ),
   INVALID_ZIPCODE: new BadRequest('The zip code should be a numeric value.'),
   STORE_NOT_FOUND: new NotFound('No store found for the given input.'),
+  GEOCODING_SERVER_ERROR: new BadRequest(
+    'Error getting the response from the geocoding service.',
+  ),
 };

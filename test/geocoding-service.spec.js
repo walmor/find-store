@@ -2,8 +2,11 @@ import nock from 'nock';
 
 import { geocodingService, HERE_URL } from '../src/geocoding-service';
 import { config } from '../src/config';
+import { errors } from '../src/errors';
 
 function mockHEREEndpoint(searchtext, response) {
+  const status = response ? 200 : 500;
+
   nock(HERE_URL)
     .get('')
     .query({
@@ -14,7 +17,7 @@ function mockHEREEndpoint(searchtext, response) {
       gen: 9,
       searchtext,
     })
-    .reply(200, response);
+    .reply(status, response);
 }
 
 function getHEREValidResponse({ latitude, longitude }) {
@@ -107,5 +110,15 @@ describe('The geocoding service', () => {
     const coords = await geocodingService.getCoordinates(zipcode);
 
     expect(coords).toBeNull();
+  });
+
+  it('should handle server errors and return a friendly error', async () => {
+    const zipcode = '999999999';
+
+    mockHEREEndpoint(zipcode, null);
+
+    const get = geocodingService.getCoordinates(zipcode);
+
+    expect(get).rejects.toEqual(errors.GEOCODING_SERVER_ERROR);
   });
 });
