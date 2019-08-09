@@ -1,7 +1,7 @@
 {
-  "name": "mmc-geo",
+  "name": "find-store",
   "version": "1.0.0",
-  "description": "Find the nearest store",
+  "description": "Find the nearest store example API.",
   "main": "index.js",
   "scripts": {
     "start": "node -r esm src/server.js",
@@ -46,5 +46,8 @@
     "transform": {
       "\\.m?js$": "jest-esm-transformer"
     }
+  },
+  "engines": {
+    "node": "10.16"
   }
 }

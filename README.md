@@ -20,7 +20,13 @@ To find the nearest store, I'm using the [geokdbush library](https://github.com/
 
 In a production environment with a large dataset, we would need a database to persist the stores. In this case, the idea is still the same, creating a spatial index, but that should be supported by the database. If using Postgres, for example, we could use [PostGIS](http://postgis.net/) which is spatial database extender for PostgreSQL.
 
-## Runnig the project locally
+## Live Demo
+
+A live demo could be found here:
+
+https://findstore-demo.herokuapp.com/
+
+## Running the project locally
 
 After cloning the project, first install the dependencies:
 
@@ -38,7 +44,7 @@ npm start
 
 ## Running the tests
 
-To run the tests HERE credentials are not required. Just run:
+To run the tests, HERE credentials are not required. Just run:
 
 ```bash
 npm test
