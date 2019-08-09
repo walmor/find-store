@@ -7,15 +7,19 @@ export const storeRepository = {
   async init() {
     const opts = {
       colParser: {
-        latitude: 'number',
-        longitude: 'number',
+        'coords.latitude': 'number',
+        'coords.longitude': 'number',
       },
       checkType: true,
     };
 
     const stores = await csv(opts).fromFile(path.join(__dirname, 'stores.csv'));
 
-    this.index = new KDBush(stores, s => s.longitude, s => s.latitude);
+    this.index = new KDBush(
+      stores,
+      s => s.coords.longitude,
+      s => s.coords.latitude,
+    );
   },
 
   clear() {

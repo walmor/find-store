@@ -11,8 +11,10 @@ const FIRST_STORE = {
   city: 'Crystal',
   state: 'MN',
   zipcode: '55428-3507',
-  latitude: 45.0521539,
-  longitude: -93.364854,
+  coords: {
+    latitude: 45.0521539,
+    longitude: -93.364854,
+  },
   county: 'Hennepin County',
 };
 
@@ -23,8 +25,10 @@ const LAST_STORE = {
   city: 'Freeport',
   state: 'NY',
   zipcode: '11520-3943',
-  latitude: 40.6555849,
-  longitude: -73.5717874,
+  coords: {
+    latitude: 40.6555849,
+    longitude: -73.5717874,
+  },
   county: 'Nassau County',
 };
 
@@ -60,10 +64,7 @@ describe('The store repository', () => {
     });
 
     it('should find a store given an exact coordinate', async () => {
-      const coords = {
-        longitude: FIRST_STORE.longitude,
-        latitude: FIRST_STORE.latitude,
-      };
+      const { coords } = FIRST_STORE;
 
       const store = storeRepository.find(coords);
 
@@ -72,8 +73,8 @@ describe('The store repository', () => {
 
     it('should find a store given a close coordinate', async () => {
       const coords = {
-        longitude: LAST_STORE.longitude - 0.05,
-        latitude: LAST_STORE.latitude - 0.03,
+        longitude: LAST_STORE.coords.longitude - 0.05,
+        latitude: LAST_STORE.coords.latitude - 0.03,
       };
 
       const store = storeRepository.find(coords);
