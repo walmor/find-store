@@ -3,13 +3,15 @@ import bodyParser from 'body-parser';
 import errorHandler from 'express-error-handler';
 import 'express-async-errors';
 
+import { storeService } from './store-service';
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', async (req, res) => {
-  res.json({ message: 'Hello World!' });
+app.get('/closest', async (req, res) => {
+  res.json(await storeService.closest(req.query));
 });
 
 app.use(
